@@ -10,6 +10,8 @@ import 'package:angular2/platform/common.dart';
 import 'package:alert/alert_service.dart';
 
 import 'package:contract_list/contract_list_component.dart';
+import 'package:resources_loader/resources_loader.dart';
+
 
 bool get isDebug =>
     (const String.fromEnvironment('PRODUCTION', defaultValue: 'false')) !=
@@ -23,6 +25,7 @@ main() async {
   ComponentRef ref = await bootstrap(ContractListComponent, [
     ROUTER_PROVIDERS,
     const Provider(LocationStrategy, useClass: HashLocationStrategy),
+    const Provider(ResourcesLoaderService),
     const Provider(AlertService)
   ]);
 

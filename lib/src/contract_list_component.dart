@@ -2,7 +2,7 @@ import 'package:angular2/core.dart';
 import 'package:angular2/router.dart';
 
 import 'package:alert/alert_service.dart';
-
+import 'package:resources_loader/resources_loader.dart';
 import 'package:grid/grid.dart';
 
 @Component(selector: 'contract-list')
@@ -18,8 +18,9 @@ class ContractListComponent implements OnInit {
 
   final Router _router;
   final AlertService _alertService;
+  final ResourcesLoaderService _resourcesLoaderService;
 
-  ContractListComponent(this._router, this._alertService) {}
+  ContractListComponent(this._router, this._alertService, this._resourcesLoaderService) {}
 
   @override
   void ngOnInit() {
