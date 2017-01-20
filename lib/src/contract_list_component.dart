@@ -60,6 +60,6 @@ class ContractListComponent implements OnInit {
         sortable: true,
         format: "{0: MM/dd/yyyy}"));
 
-    new Grid("#grid", options);
+    //new Grid("#grid", options);
   }
 }
