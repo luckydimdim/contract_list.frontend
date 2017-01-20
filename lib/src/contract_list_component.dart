@@ -1,19 +1,18 @@
 import 'package:angular2/core.dart';
 import 'package:angular2/router.dart';
 
-
 import 'package:alert/alert_service.dart';
+
 import 'package:grid/grid.dart';
 
 @Component(
-    selector: 'contractList'
+    selector: 'contract-list'
 )
 
 @View(
     templateUrl: 'contract_list_component.html',
     directives: const [RouterLink]
 )
-
 
 class ContractListComponent implements OnInit {
 
