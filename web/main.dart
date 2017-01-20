@@ -1,7 +1,5 @@
-import 'dart:async';
 import 'dart:core';
 
-import 'dart:html';
 import 'package:angular2/platform/browser.dart';
 import 'package:angular2/core.dart';
 import 'package:angular2/src/core/reflection/reflection.dart';
