@@ -14,7 +14,8 @@ import 'package:alert/alert_service.dart';
 import 'package:contract_list/contract_list_component.dart';
 
 bool get isDebug =>
-    (const String.fromEnvironment('PRODUCTION', defaultValue: 'false')) != 'true';
+    (const String.fromEnvironment('PRODUCTION', defaultValue: 'false')) !=
+    'true';
 
 main() async {
   if (isDebug) {
