@@ -35,7 +35,7 @@ class ContractListComponent implements OnInit {
     var transportRead = new DataSourceTransportRead()
       ..type = "get"
       ..dataType = "json"
-      ..url = "//localhost:5000/api/contract";
+      ..url = "//cm-ylng-msk-01/cmas-backend/api/contract";
 
     var transport = new DataSourceTransport()..read = transportRead;
 
