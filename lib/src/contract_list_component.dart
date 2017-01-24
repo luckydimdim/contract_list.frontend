@@ -8,7 +8,7 @@ import 'package:grid/grid.dart';
 @Component(selector: 'contract-list')
 @View(
     templateUrl: 'contract_list_component.html', directives: const [RouterLink])
-class ContractListComponent implements OnInit {
+class ContractListComponent implements OnInit, OnDestroy {
   static const String route_name = "ContractList";
   static const String route_path = "contractList";
   static const Route route = const Route(
@@ -19,6 +19,8 @@ class ContractListComponent implements OnInit {
   final Router _router;
   final AlertService _alertService;
   final ResourcesLoaderService _resourcesLoaderService;
+
+  Grid _grid;
 
   ContractListComponent(this._router, this._alertService, this._resourcesLoaderService) {}
 
@@ -48,6 +50,12 @@ class ContractListComponent implements OnInit {
         format: "{0: MM/dd/yyyy}"));
 */
 
-    new Grid(this._resourcesLoaderService, "#grid", options);
+    _grid = new Grid(this._resourcesLoaderService, "#grid", options);
+  }
+
+  @override
+  void ngOnDestroy() {
+    _grid.Destroy();
+
   }
 }
