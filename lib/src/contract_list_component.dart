@@ -4,6 +4,7 @@ import 'package:angular2/router.dart';
 import 'package:alert/alert_service.dart';
 import 'package:resources_loader/resources_loader.dart';
 import 'package:grid/grid.dart';
+import 'package:js/js.dart';
 
 @Component(selector: 'contract-list')
 @View(
@@ -24,13 +25,21 @@ class ContractListComponent implements OnInit, OnDestroy {
 
   ContractListComponent(this._router, this._alertService, this._resourcesLoaderService) {}
 
+  String _render(dynamic record,dynamic ind, dynamic col_ind, dynamic data){
+
+    /* непонятно как работать с record. не получается вытянуть свойства (ID) */
+
+    var html = '<a href="#/master/contractView">'+ data +'</a>';
+    return html;
+  }
+
   @override
   void ngOnInit() {
 
 
     var columns = new List<Column>();
     columns.add(new Column(field: 'number', caption: '№', size: '150px'));
-    columns.add(new Column(field: 'name', caption: 'Наименование договора', size: '300px'));
+    columns.add(new Column(field: 'name', caption: 'Наименование договора', size: '300px', render: allowInterop(_render)));
     columns.add(new Column(field: 'conclusionDate', caption: 'Дата заключения', size: '150px', render: 'date'));
 
     GridOptions options = new GridOptions()
