@@ -44,6 +44,7 @@ class ContractListComponent implements OnInit, OnDestroy {
 
     GridOptions options = new GridOptions()
       ..name = 'grid'
+      ..fixedBody = true
       ..columns = columns
       ..url='//cm-ylng-msk-01/cmas-backend/api/contract'
       ..method='GET';
