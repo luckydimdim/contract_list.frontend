@@ -24,33 +24,19 @@ class ContractListComponent implements OnInit {
 
   @override
   void ngOnInit() {
-    var model = new DataSourceSchemaModelWithFieldsArray();
-    model.fields = new List<DataSourceSchemaModelField>();
 
-    model.fields.add(
-        new DataSourceSchemaModelField(field: "conclusionDate", type: "date"));
 
-    var schema = new DataSourceSchema()..model = model;
-
-    var transportRead = new DataSourceTransportRead()
-      ..type = "get"
-      ..dataType = "json"
-      ..url = "//cm-ylng-msk-01/cmas-backend/api/contract";
-
-    var transport = new DataSourceTransport()..read = transportRead;
-
-    var dataSource = new DataSource()
-      ..type = "odata"
-      ..schema = schema
-      ..transport = transport;
+    var columns = new List<Column>();
+    columns.add(new Column(field: 'number', caption: '№', size: '150px'));
+    columns.add(new Column(field: 'name', caption: 'Наименование договора', size: '300px'));
+    columns.add(new Column(field: 'conclusionDate', caption: 'Дата заключения', size: '150px', render: 'date'));
 
     GridOptions options = new GridOptions()
-      ..dataSource = dataSource
-      ..columns = new List<GridColumn>()
-      ..filterable = true
-      //..height = 500
-      ..sortable = true;
-
+      ..name = 'grid'
+      ..columns = columns
+      ..url='//cm-ylng-msk-01/cmas-backend/api/contract'
+      ..method='GET';
+/*
     options.columns.add(new GridColumn(
         field: "number", title: "№", width: 150, filterable: true));
     options.columns.add(new GridColumn(
@@ -60,6 +46,7 @@ class ContractListComponent implements OnInit {
         title: "Дата заключения",
         sortable: true,
         format: "{0: MM/dd/yyyy}"));
+*/
 
     new Grid(this._resourcesLoaderService, "#grid", options);
   }
