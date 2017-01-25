@@ -23,42 +23,37 @@ class ContractListComponent implements OnInit, OnDestroy {
 
   Grid _grid;
 
-  ContractListComponent(this._router, this._alertService, this._resourcesLoaderService) {}
+  ContractListComponent(
+      this._router, this._alertService, this._resourcesLoaderService) {}
 
-  String _render(dynamic record,dynamic ind, dynamic col_ind, dynamic data){
-
+  String _render(dynamic record, dynamic ind, dynamic col_ind, dynamic data) {
     /* непонятно как работать с record. не получается вытянуть свойства (ID) */
 
-    var html = '<a href="#/master/contractView">'+ data +'</a>';
+    var html = '<a href="#/master/contractView">' + data + '</a>';
     return html;
   }
 
   @override
   void ngOnInit() {
-
-
     var columns = new List<Column>();
     columns.add(new Column(field: 'number', caption: '№', size: '150px'));
-    columns.add(new Column(field: 'name', caption: 'Наименование договора', size: '300px', render: allowInterop(_render)));
-    columns.add(new Column(field: 'conclusionDate', caption: 'Дата заключения', size: '150px', render: 'date'));
+    columns.add(new Column(
+        field: 'name',
+        caption: 'Наименование договора',
+        size: '300px',
+        render: allowInterop(_render)));
+    columns.add(new Column(
+        field: 'conclusionDate',
+        caption: 'Дата заключения',
+        size: '150px',
+        render: 'date'));
 
     GridOptions options = new GridOptions()
       ..name = 'grid'
       ..fixedBody = true
       ..columns = columns
-      ..url='//cm-ylng-msk-01/cmas-backend/api/contract'
-      ..method='GET';
-/*
-    options.columns.add(new GridColumn(
-        field: "number", title: "№", width: 150, filterable: true));
-    options.columns.add(new GridColumn(
-        field: "name", title: "Наименование договора", sortable: true));
-    options.columns.add(new GridColumn(
-        field: "conclusionDate",
-        title: "Дата заключения",
-        sortable: true,
-        format: "{0: MM/dd/yyyy}"));
-*/
+      ..url = '//cm-ylng-msk-01/cmas-backend/api/contract'
+      ..method = 'GET';
 
     _grid = new Grid(this._resourcesLoaderService, "#grid", options);
   }
@@ -66,6 +61,5 @@ class ContractListComponent implements OnInit, OnDestroy {
   @override
   void ngOnDestroy() {
     _grid.Destroy();
-
   }
 }

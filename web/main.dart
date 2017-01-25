@@ -12,7 +12,6 @@ import 'package:alert/alert_service.dart';
 import 'package:contract_list/contract_list_component.dart';
 import 'package:resources_loader/resources_loader.dart';
 
-
 bool get isDebug =>
     (const String.fromEnvironment('PRODUCTION', defaultValue: 'false')) !=
     'true';
