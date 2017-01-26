@@ -29,7 +29,7 @@ class ContractListComponent implements OnInit, OnDestroy {
   String _render(dynamic record, dynamic ind, dynamic col_ind, dynamic data) {
     /* непонятно как работать с record. не получается вытянуть свойства (ID) */
 
-    var html = '<a href="#/master/contractView">' + data + '</a>';
+    var html = '<a href="#/master/contract">' + data + '</a>';
     return html;
   }
 
