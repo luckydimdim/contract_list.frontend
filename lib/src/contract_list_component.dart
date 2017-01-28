@@ -52,7 +52,8 @@ class ContractListComponent implements OnInit, OnDestroy {
       ..name = 'grid'
       ..fixedBody = true
       ..columns = columns
-      ..url = '//cm-ylng-msk-01/cmas-backend/api/contract'
+      //..url = '//cm-ylng-msk-01/cmas-backend/api/contract'
+      ..url = 'http://localhost:5000/api/contract'      
       ..method = 'GET';
 
     _grid = new Grid(this._resourcesLoaderService, "#grid", options);
