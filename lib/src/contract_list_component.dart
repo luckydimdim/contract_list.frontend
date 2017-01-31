@@ -30,7 +30,12 @@ class ContractListComponent implements OnInit {
     var table = querySelector('[table-click]') as TableElement;
     table.rows.forEach((TableRowElement row) {
       row.onClick.listen((MouseEvent e) {
-        _router.navigateByUrl(e.currentTarget.getAttribute('data-href'));
+        var currentRow = e.currentTarget as TableRowElement;
+        String link = currentRow.getAttribute('data-href');
+
+        print(link);
+
+        _router.parent.navigateByUrl(link);
       });
     });
   }
