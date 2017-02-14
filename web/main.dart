@@ -11,22 +11,28 @@ import 'package:alert/alert_service.dart';
 
 import 'package:contract_list/contract_list_component.dart';
 import 'package:resources_loader/resources_loader.dart';
+import 'package:master_layout/master_layout_component.dart';
 
 bool get isDebug =>
     (const String.fromEnvironment('PRODUCTION', defaultValue: 'false')) !=
     'true';
+
+@Component(selector: 'app')
+@View(
+  template: '<master-layout><contract-list></contract-list></master-layout>',
+  directives: const [MasterLayoutComponent, ContractListComponent])
+class AppComponent {}
 
 main() async {
   if (isDebug) {
     reflector.trackUsage();
   }
 
-  ComponentRef ref = await bootstrap(ContractListComponent, [
+  ComponentRef ref = await bootstrap(AppComponent, [
     ROUTER_PROVIDERS,
     const Provider(LocationStrategy, useClass: HashLocationStrategy),
     const Provider(ResourcesLoaderService),
-    const Provider(AlertService)
-  ]);
+    const Provider(AlertService)]);
 
   if (isDebug) {
     print('Application in DebugMode');
