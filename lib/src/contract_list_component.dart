@@ -26,7 +26,7 @@ class ContractListComponent implements OnInit {
       this._router, this._alertService, this._resourcesLoaderService) {}
 
   void breadcrumbInit(){
-    var  breadcrumbContent = querySelector('#breadcrumbContent') as DivElement;
+    var  breadcrumbContent = querySelector('#breadcrumbContent') as HtmlElement;
 
     if (breadcrumbContent == null)
       return;
